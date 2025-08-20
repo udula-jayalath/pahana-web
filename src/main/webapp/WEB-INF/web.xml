@@ -153,6 +153,53 @@
         <url-pattern>/items/*</url-pattern>
     </filter-mapping>
 
+    <!-- Bills -->
+    <servlet>
+        <servlet-name>BillListServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.BillListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BillListServlet</servlet-name>
+        <url-pattern>/bills</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BillNewServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.BillNewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BillNewServlet</servlet-name>
+        <url-pattern>/bills/new</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BillCreateServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.BillCreateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BillCreateServlet</servlet-name>
+        <url-pattern>/bills/create</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BillViewServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.BillViewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BillViewServlet</servlet-name>
+        <url-pattern>/bills/view</url-pattern>
+    </servlet-mapping>
+
+    <!-- Protect bills routes -->
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/bills</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/bills/*</url-pattern>
+    </filter-mapping>
+
 
     <session-config>
         <session-timeout>30</session-timeout>

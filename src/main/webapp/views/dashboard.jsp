@@ -14,7 +14,7 @@
 <ul>
     <li><a href="<%=request.getContextPath()%>/views/customers.jsp">Manage Customers</a></li>
     <li><a href="<%=request.getContextPath()%>/views/items.jsp">Manage Items</a></li>
-    <li><a href="<%=request.getContextPath()%>/views/billing.jsp">Billing</a></li>
+    <li><a href="<%=request.getContextPath()%>/views/bills.jsp">Billing</a></li>
 </ul>
 <p><a href="<%=request.getContextPath()%>/auth/logout">Logout</a></p>
 </body>
