@@ -24,6 +24,52 @@
         <url-pattern>/auth/login</url-pattern>
     </servlet-mapping>
 
+    <!-- Customers -->
+    <servlet>
+        <servlet-name>CustomerListServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.CustomerListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CustomerListServlet</servlet-name>
+        <url-pattern>/customers</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CustomerNewServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.CustomerNewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CustomerNewServlet</servlet-name>
+        <url-pattern>/customers/new</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CustomerCreateServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.CustomerCreateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CustomerCreateServlet</servlet-name>
+        <url-pattern>/customers/create</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CustomerEditServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.CustomerEditServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CustomerEditServlet</servlet-name>
+        <url-pattern>/customers/edit</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CustomerDeleteServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.CustomerDeleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CustomerDeleteServlet</servlet-name>
+        <url-pattern>/customers/delete</url-pattern>
+    </servlet-mapping>
+
     <filter>
         <filter-name>AuthFilter</filter-name>
         <filter-class>lk.icbt.pahana.web.AuthFilter</filter-class>
@@ -32,6 +78,16 @@
         <filter-name>AuthFilter</filter-name>
         <url-pattern>/views/*</url-pattern>
     </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/customers/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/customers</url-pattern>
+    </filter-mapping>
+
     <servlet>
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>lk.icbt.pahana.web.LogoutServlet</servlet-class>
