@@ -1,9 +1,8 @@
 package lk.icbt.pahana.dao;
 
-import java.io.InputStream;
+import lk.icbt.pahana.util.AppConfig;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.util.Properties;
 
 public final class ConnectionFactory {
     private static ConnectionFactory instance;
@@ -11,14 +10,9 @@ public final class ConnectionFactory {
 
     private ConnectionFactory() {
         try {
-            Properties p = new Properties();
-            try (InputStream in = getClass().getClassLoader().getResourceAsStream("db.properties")) {
-                if (in == null) throw new IllegalStateException("db.properties not found");
-                p.load(in);
-            }
-            url = p.getProperty("db.url");
-            user = p.getProperty("db.user");
-            pass = p.getProperty("db.password");
+            this.url  = AppConfig.get().url();
+            this.user = AppConfig.get().user();
+            this.pass = AppConfig.get().pass();
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (Exception e) {
             throw new RuntimeException("DB init failed", e);
