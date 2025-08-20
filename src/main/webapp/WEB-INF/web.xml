@@ -1,7 +1,227 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <display-name>Pahana Edu</display-name>
 
-<web-app>
-  <display-name>Archetype Created Web Application</display-name>
+    <servlet>
+        <servlet-name>HelloServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.HelloServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HelloServlet</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+
+    <!-- Login servlet is mapped now but we’ll implement feature next -->
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/auth/login</url-pattern>
+    </servlet-mapping>
+
+    <!-- Customers -->
+    <servlet>
+        <servlet-name>CustomerListServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.CustomerListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CustomerListServlet</servlet-name>
+        <url-pattern>/customers</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CustomerNewServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.CustomerNewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CustomerNewServlet</servlet-name>
+        <url-pattern>/customers/new</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CustomerCreateServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.CustomerCreateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CustomerCreateServlet</servlet-name>
+        <url-pattern>/customers/create</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CustomerEditServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.CustomerEditServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CustomerEditServlet</servlet-name>
+        <url-pattern>/customers/edit</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CustomerDeleteServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.CustomerDeleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CustomerDeleteServlet</servlet-name>
+        <url-pattern>/customers/delete</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>lk.icbt.pahana.web.AuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/views/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/customers/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/customers</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/auth/logout</url-pattern>
+    </servlet-mapping>
+
+    <!-- Items -->
+    <servlet>
+        <servlet-name>ItemListServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.ItemListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ItemListServlet</servlet-name>
+        <url-pattern>/items</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ItemNewServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.ItemNewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ItemNewServlet</servlet-name>
+        <url-pattern>/items/new</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ItemCreateServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.ItemCreateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ItemCreateServlet</servlet-name>
+        <url-pattern>/items/create</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ItemEditServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.ItemEditServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ItemEditServlet</servlet-name>
+        <url-pattern>/items/edit</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ItemDeleteServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.ItemDeleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ItemDeleteServlet</servlet-name>
+        <url-pattern>/items/delete</url-pattern>
+    </servlet-mapping>
+
+    <!-- Protect items routes -->
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/items</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/items/*</url-pattern>
+    </filter-mapping>
+
+    <!-- Bills -->
+    <servlet>
+        <servlet-name>BillListServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.BillListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BillListServlet</servlet-name>
+        <url-pattern>/bills</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BillNewServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.BillNewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BillNewServlet</servlet-name>
+        <url-pattern>/bills/new</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BillCreateServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.BillCreateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BillCreateServlet</servlet-name>
+        <url-pattern>/bills/create</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BillViewServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.BillViewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BillViewServlet</servlet-name>
+        <url-pattern>/bills/view</url-pattern>
+    </servlet-mapping>
+
+    <!-- Protect bills routes -->
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/bills</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/bills/*</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>HelpServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.HelpServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HelpServlet</servlet-name>
+        <url-pattern>/help</url-pattern>
+    </servlet-mapping>
+
+    <!-- Protect Help with AuthFilter (optional) -->
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/help</url-pattern>
+    </filter-mapping>
+
+
+
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+    <listener>
+        <listener-class>lk.icbt.pahana.web.AppConfigContextListener</listener-class>
+    </listener>
 </web-app>
