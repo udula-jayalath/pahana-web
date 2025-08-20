@@ -97,6 +97,62 @@
         <url-pattern>/auth/logout</url-pattern>
     </servlet-mapping>
 
+    <!-- Items -->
+    <servlet>
+        <servlet-name>ItemListServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.ItemListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ItemListServlet</servlet-name>
+        <url-pattern>/items</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ItemNewServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.ItemNewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ItemNewServlet</servlet-name>
+        <url-pattern>/items/new</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ItemCreateServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.ItemCreateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ItemCreateServlet</servlet-name>
+        <url-pattern>/items/create</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ItemEditServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.ItemEditServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ItemEditServlet</servlet-name>
+        <url-pattern>/items/edit</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ItemDeleteServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.ItemDeleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ItemDeleteServlet</servlet-name>
+        <url-pattern>/items/delete</url-pattern>
+    </servlet-mapping>
+
+    <!-- Protect items routes -->
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/items</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/items/*</url-pattern>
+    </filter-mapping>
+
 
     <session-config>
         <session-timeout>30</session-timeout>
