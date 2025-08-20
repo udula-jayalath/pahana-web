@@ -200,6 +200,21 @@
         <url-pattern>/bills/*</url-pattern>
     </filter-mapping>
 
+    <servlet>
+        <servlet-name>HelpServlet</servlet-name>
+        <servlet-class>lk.icbt.pahana.web.HelpServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HelpServlet</servlet-name>
+        <url-pattern>/help</url-pattern>
+    </servlet-mapping>
+
+    <!-- Protect Help with AuthFilter (optional) -->
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/help</url-pattern>
+    </filter-mapping>
+
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
