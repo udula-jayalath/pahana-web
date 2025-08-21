@@ -1,7 +1,9 @@
 <%@ page import="lk.icbt.pahana.model.Customer" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+
 <%-- Helper: HTML-escape --%>
+
 <%!
     private static String esc(Object o){
         if (o == null) return "";
@@ -13,6 +15,7 @@
     }
 %>
 
+
 <%
     // Auth guard & page state
     Object username = session.getAttribute("username");
@@ -22,11 +25,13 @@
     Customer c    = (Customer) request.getAttribute("customer");  // may be null on create
     boolean isEdit = "edit".equalsIgnoreCase(mode);
     String error  = (String) request.getAttribute("error");
+
 %>
 
 <!doctype html>
 <html>
 <head>
+
     <title><%= isEdit ? "Edit" : "New" %> Customer • Pahana</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
@@ -101,9 +106,11 @@
         }
         .btn.secondary{ background:#ffffff14 }
         .btn:active{ transform: translateY(1px) }
+
     </style>
 </head>
 <body>
+
 
 <div class="container">
     <div class="top">
@@ -181,6 +188,7 @@
             </div>
         </form>
     </div>
+
 </div>
 
 </body>

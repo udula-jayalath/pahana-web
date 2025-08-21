@@ -1,5 +1,6 @@
 <%@ page import="java.util.*, lk.icbt.pahana.model.Customer, lk.icbt.pahana.model.Item" %>
 
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%-- (optional) esc helper if you later echo any raw strings --%>
@@ -14,6 +15,7 @@
 <%
     Object username = session.getAttribute("username");
     if (username == null) { response.sendRedirect(request.getContextPath()+"/views/login.jsp"); return; }
+
 
 
     @SuppressWarnings("unchecked")
@@ -97,6 +99,7 @@
         .totals .row:last-child{border-bottom:none}
         .totals .grand{ font-weight:700; }
 
+
     </style>
 
     <script>
@@ -123,8 +126,10 @@
             const sel = row.querySelector('select[name="item_id"]');
             const price = getPriceFromSelect(sel);
 
+
             const qty = Math.max(1, toNum(qtyInput.value||"1"));
             qtyInput.value = qty; // normalize
+
 
             row.querySelector('.unit-price').textContent = fmt(price);
             row.querySelector('.amount').textContent = fmt(price * qty);
@@ -145,14 +150,18 @@
         }
 
         function removeRow(btn){
+
             const tbody = document.getElementById('lines');
             if (tbody.children.length <= 1){ alert('At least one line is required.'); return; }
             const tr = btn.closest('tr'); tr.parentNode.removeChild(tr);
+
 
             updateTotals();
         }
 
         function updateTotals(){
+
+
 
             let subtotal = 0;
             document.querySelectorAll('#lines .amount').forEach(td => subtotal += toNum(td.textContent));
@@ -174,6 +183,7 @@
 
             // wire first row + totals
 
+
             document.querySelectorAll('select[name="item_id"]').forEach(sel=>{
                 sel.addEventListener('change', function(){ updateRowFromSelect(sel); });
                 updateRowFromSelect(sel);
@@ -186,6 +196,7 @@
                 const el = document.querySelector('input[name="'+name+'"]');
                 if (el) el.addEventListener('input', updateTotals);
             });
+
 
 
             // basic client validation to avoid empty items
@@ -202,6 +213,7 @@
     </script>
 </head>
 <body>
+
 
 
 <div class="container">
@@ -292,6 +304,7 @@
 </div>
 
 
+
 <template id="row-template">
     <tr>
         <td>
@@ -300,7 +313,9 @@
                 <% for (Item it : items) { %>
                 <option value="<%= it.getId() %>" data-price="<%= it.getUnitPrice().setScale(2) %>">
 
+
                     <%= esc(it.getName()) %>
+
 
                 </option>
                 <% } %>
@@ -308,9 +323,11 @@
         </td>
         <td class="unit-price right">0.00</td>
 
+
         <td><input name="qty" type="number" min="1" value="1" required style="width:90px"></td>
         <td class="amount right">0.00</td>
         <td><button type="button" class="btn danger" onclick="removeRow(this)">Remove</button></td>
+
 
     </tr>
 </template>

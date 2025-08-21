@@ -1,4 +1,5 @@
 <%@ page import="java.util.*, lk.icbt.pahana.model.Customer" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%-- HTML escape helper --%>
@@ -10,6 +11,7 @@
     }
 %>
 
+
 <%
     Object username = session.getAttribute("username");
     if (username == null) { response.sendRedirect(request.getContextPath()+"/views/login.jsp"); return; }
@@ -17,6 +19,7 @@
     List<Customer> customers = (List<Customer>) request.getAttribute("customers");
     String q = (String) (request.getAttribute("q")==null ? "" : request.getAttribute("q"));
 %>
+
 
 <!doctype html>
 <html>
@@ -187,6 +190,7 @@
 
     <a class="back btn" href="<%=request.getContextPath()%>/views/dashboard.jsp">&larr; Back to Dashboard</a>
 </div>
+
 
 </body>
 </html>

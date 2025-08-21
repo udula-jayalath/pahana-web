@@ -1,4 +1,5 @@
 
+
 <%@ page import="java.util.*, java.math.BigDecimal, lk.icbt.pahana.model.Bill" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -16,6 +17,7 @@
 %>
 
 
+
 <%
     Object username = session.getAttribute("username");
     if (username == null) { response.sendRedirect(request.getContextPath()+"/views/login.jsp"); return; }
@@ -23,6 +25,7 @@
     List<Bill> bills = (List<Bill>) request.getAttribute("bills");
     String q = (String) (request.getAttribute("q")==null? "" : request.getAttribute("q"));
 %>
+
 
 
 <!doctype html>

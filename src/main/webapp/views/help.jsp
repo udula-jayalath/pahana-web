@@ -1,5 +1,6 @@
 <%@ page import="java.util.*, lk.icbt.pahana.model.ManualSection" %>
 
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
@@ -12,6 +13,7 @@
 <!doctype html>
 <html>
 <head>
+
 
     <title>Help & User Manual • Pahana</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -110,6 +112,7 @@
 </head>
 <body>
 
+
 <div class="container">
     <div class="top">
         <div>
@@ -161,6 +164,7 @@
     </div>
 
     <a class="back btn noprint" href="<%=request.getContextPath()%>/views/dashboard.jsp">&larr; Back to Dashboard</a>
+
 
 </div>
 

@@ -1,4 +1,5 @@
 
+
 <%@ page import="java.util.*, lk.icbt.pahana.model.Item" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -22,6 +23,7 @@
     List<Item> items = (List<Item>) request.getAttribute("items");
     String q = (String) (request.getAttribute("q")==null ? "" : request.getAttribute("q"));
 %>
+
 
 
 <!doctype html>
@@ -192,6 +194,7 @@
 
     <a class="back btn" href="<%=request.getContextPath()%>/views/dashboard.jsp">&larr; Back to Dashboard</a>
 </div>
+
 
 </body>
 </html>

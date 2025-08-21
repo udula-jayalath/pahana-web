@@ -1,4 +1,5 @@
 
+
 <%@ page import="lk.icbt.pahana.model.Bill, lk.icbt.pahana.model.BillItem, java.util.*, java.math.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -17,10 +18,12 @@
 %>
 
 
+
 <%
     Object username = session.getAttribute("username");
     if (username == null) { response.sendRedirect(request.getContextPath()+"/views/login.jsp"); return; }
     Bill b = (Bill) request.getAttribute("bill");
+
 
     String status = b.getStatus()==null ? "" : b.getStatus().toUpperCase(Locale.ENGLISH);
     String statusCls = "issued";
@@ -126,6 +129,7 @@
             a{ color:#000 !important; text-decoration:none }
             @page { margin: 12mm }
 
+
         }
     </style>
     <script>
@@ -133,6 +137,7 @@
     </script>
 </head>
 <body>
+
 
 <div class="wrap">
     <div class="toolbar noprint">
@@ -217,6 +222,7 @@
         <footer class="noprint">Thank you for your business.</footer>
     </div>
 </div>
+
 
 </body>
 </html>
