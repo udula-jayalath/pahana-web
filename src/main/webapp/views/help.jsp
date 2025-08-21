@@ -1,5 +1,7 @@
 <%@ page import="java.util.*, lk.icbt.pahana.model.ManualSection" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <%
     Object username = session.getAttribute("username");
     if (username == null) { response.sendRedirect(request.getContextPath()+"/views/login.jsp"); return; }
@@ -10,6 +12,7 @@
 <!doctype html>
 <html>
 <head>
+
     <title>Help & User Manual • Pahana</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <style>
@@ -86,6 +89,7 @@
             a{ color:#000 !important; text-decoration:none }
             @page { margin: 12mm }
         }
+
     </style>
     <script>
         function toggle(id){
@@ -157,6 +161,7 @@
     </div>
 
     <a class="back btn noprint" href="<%=request.getContextPath()%>/views/dashboard.jsp">&larr; Back to Dashboard</a>
+
 </div>
 
 </body>

@@ -1,7 +1,9 @@
 <%@ page import="lk.icbt.pahana.model.Item" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+
 <%-- Helper: HTML-escape --%>
+
 <%!
     private static String esc(Object o){
         if (o == null) return "";
@@ -12,12 +14,14 @@
 %>
 
 <%
+
     // Auth + page state
     Object username = session.getAttribute("username");
     if (username == null) { response.sendRedirect(request.getContextPath()+"/views/login.jsp"); return; }
 
     String mode = (String) request.getAttribute("mode"); // "create" | "edit"
     Item it     = (Item) request.getAttribute("item");   // may be null in create
+
     boolean isEdit = "edit".equalsIgnoreCase(mode);
     String error = (String) request.getAttribute("error");
 %>
@@ -25,6 +29,7 @@
 <!doctype html>
 <html>
 <head>
+
     <title><%= isEdit ? "Edit" : "New" %> Item • Pahana</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <style>

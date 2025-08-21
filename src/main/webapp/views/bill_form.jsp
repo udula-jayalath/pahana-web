@@ -1,4 +1,5 @@
 <%@ page import="java.util.*, lk.icbt.pahana.model.Customer, lk.icbt.pahana.model.Item" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%-- (optional) esc helper if you later echo any raw strings --%>
@@ -14,12 +15,14 @@
     Object username = session.getAttribute("username");
     if (username == null) { response.sendRedirect(request.getContextPath()+"/views/login.jsp"); return; }
 
+
     @SuppressWarnings("unchecked")
     List<Customer> customers = (List<Customer>) request.getAttribute("customers");
     @SuppressWarnings("unchecked")
     List<Item> items = (List<Item>) request.getAttribute("items");
     String error = (String) request.getAttribute("error");
 %>
+
 
 <!doctype html>
 <html>
@@ -93,6 +96,7 @@
         .totals .row{display:flex; align-items:center; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(255,255,255,.12)}
         .totals .row:last-child{border-bottom:none}
         .totals .grand{ font-weight:700; }
+
     </style>
 
     <script>
@@ -103,6 +107,7 @@
             var opt = sel.options[sel.selectedIndex];
             return toNum(opt ? opt.getAttribute('data-price') : 0);
         }
+
         function updateRowFromSelect(sel){
             const row = sel.closest('tr');
             const price = getPriceFromSelect(sel);
@@ -112,12 +117,15 @@
             row.querySelector('.amount').textContent = fmt(price * qty);
             updateTotals();
         }
+
         function updateRowFromQty(qtyInput){
             const row = qtyInput.closest('tr');
             const sel = row.querySelector('select[name="item_id"]');
             const price = getPriceFromSelect(sel);
+
             const qty = Math.max(1, toNum(qtyInput.value||"1"));
             qtyInput.value = qty; // normalize
+
             row.querySelector('.unit-price').textContent = fmt(price);
             row.querySelector('.amount').textContent = fmt(price * qty);
             updateTotals();
@@ -127,6 +135,7 @@
             const tbody = document.getElementById('lines');
             const tpl = document.getElementById('row-template').content.cloneNode(true);
             tbody.appendChild(tpl);
+
             const newRow = tbody.lastElementChild;
             const sel = newRow.querySelector('select[name="item_id"]');
             const qty = newRow.querySelector('input[name="qty"]');
@@ -134,14 +143,17 @@
             qty.addEventListener('input', function(){ updateRowFromQty(qty); });
             updateRowFromSelect(sel);
         }
+
         function removeRow(btn){
             const tbody = document.getElementById('lines');
             if (tbody.children.length <= 1){ alert('At least one line is required.'); return; }
             const tr = btn.closest('tr'); tr.parentNode.removeChild(tr);
+
             updateTotals();
         }
 
         function updateTotals(){
+
             let subtotal = 0;
             document.querySelectorAll('#lines .amount').forEach(td => subtotal += toNum(td.textContent));
             const discPct = toNum(document.querySelector('input[name="discount_pct"]').value);
@@ -159,7 +171,9 @@
         }
 
         document.addEventListener('DOMContentLoaded', function(){
+
             // wire first row + totals
+
             document.querySelectorAll('select[name="item_id"]').forEach(sel=>{
                 sel.addEventListener('change', function(){ updateRowFromSelect(sel); });
                 updateRowFromSelect(sel);
@@ -173,6 +187,7 @@
                 if (el) el.addEventListener('input', updateTotals);
             });
 
+
             // basic client validation to avoid empty items
             document.getElementById('billForm').addEventListener('submit', function(e){
                 const selects = Array.from(document.querySelectorAll('select[name="item_id"]'));
@@ -182,10 +197,12 @@
                     return false;
                 }
             });
+
         });
     </script>
 </head>
 <body>
+
 
 <div class="container">
     <div class="top">
@@ -274,6 +291,7 @@
     </form>
 </div>
 
+
 <template id="row-template">
     <tr>
         <td>
@@ -281,15 +299,19 @@
                 <option value="">-- item --</option>
                 <% for (Item it : items) { %>
                 <option value="<%= it.getId() %>" data-price="<%= it.getUnitPrice().setScale(2) %>">
+
                     <%= esc(it.getName()) %>
+
                 </option>
                 <% } %>
             </select>
         </td>
         <td class="unit-price right">0.00</td>
+
         <td><input name="qty" type="number" min="1" value="1" required style="width:90px"></td>
         <td class="amount right">0.00</td>
         <td><button type="button" class="btn danger" onclick="removeRow(this)">Remove</button></td>
+
     </tr>
 </template>
 
